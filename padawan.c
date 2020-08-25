@@ -72,7 +72,7 @@ char recibir_voluntad(){
 }
 	
 
-void definir_voluntad(char voluntad){
+float definir_voluntad(char voluntad){
 
 	float d_voluntad = CONST_VOLUNTAD;
 
@@ -95,7 +95,8 @@ void definir_voluntad(char voluntad){
 		default:
 			d_voluntad = VOLUNTAD_E_P;
 	}
-	printf("\nVOLUNTAD: %f\n", d_voluntad);
+
+	return d_voluntad;
 }
 
 
@@ -121,7 +122,7 @@ char recibir_pasado(){
 
 }
 
-void definir_pasado(char pasado){
+float definir_pasado(char pasado){
 
 	float d_pasado = CONST_PASADO;
 
@@ -132,7 +133,8 @@ void definir_pasado(char pasado){
 		default:
 			d_pasado = PASADO_N_T;
 	}
-	printf("\nPASADO: %f\n", d_pasado);
+
+	return d_pasado;
 }
 
 
@@ -142,16 +144,16 @@ float calculo_influencia(float midiclorianos){
 	float influencia = CONST_MIDICLORIANOS;
 	float constante_influencia = CONST_INFLUENCIA;
 
-	return influencia = midiclorianos * constante_influencia;;
+	return influencia = midiclorianos * constante_influencia;
 }
 
 
-float calculo_sith (float voluntad, float influencia, float pasado){
+float calculo_sith (float d_voluntad, float influencia, float d_pasado){
 
 	float constante_oscuridad = CONST_OSCURIDAD;
 	float const_probabilidad = CONST_PROBABILIDAD;
 	
-	return const_probabilidad = voluntad + (constante_oscuridad * influencia) / pasado;
+	return const_probabilidad = d_voluntad + (constante_oscuridad * influencia) / d_pasado;
 
 
 }
@@ -160,7 +162,9 @@ int main(){
 
 	float midiclorianos = CONST_MIDICLORIANOS;
 	char voluntad = CONST_VOLUNTAD;
+	float d_voluntad = 0.0F;
 	char pasado = CONST_PASADO;
+	float d_pasado = 0.0F;
 	float influencia = CONST_MIDICLORIANOS;
 	float const_probabilidad = CONST_PROBABILIDAD;
 
@@ -169,16 +173,18 @@ int main(){
 
 	voluntad = recibir_voluntad();
 	
-	definir_voluntad(voluntad);
+	d_voluntad = definir_voluntad(voluntad);
+	printf("\nVOLUNTAD: %f\n", d_voluntad);
 
 	pasado = recibir_pasado();
 	
-	definir_pasado(pasado);
+	d_pasado = definir_pasado(pasado);
+	printf("\nPASADO: %f\n", d_pasado);
 
 	influencia = calculo_influencia(midiclorianos);
 	printf("\nFUERZA: %f\n", influencia);
 
-	const_probabilidad = calculo_sith(voluntad, influencia, pasado);
+	const_probabilidad = calculo_sith(d_voluntad, influencia, d_pasado);
 	printf("\nPROBABILIDAD DE CONVERTIRSE EN SITH: %f%\n", const_probabilidad);
 
 	return 0;
