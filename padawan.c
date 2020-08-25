@@ -4,6 +4,7 @@ const float CONST_MIDICLORIANOS = 0.0F;
 const char CONST_VOLUNTAD = 'v';
 const char CONST_PASADO = 'p';
 const float CONST_PROBABILIDAD = 0.0F;
+const float CONST_CALCULO = 0.0F;
 
 const float MIDICLORIANOS_MIN = 100.0F;
 const float MIDICLORIANOS_MAX = 2999.9F;
@@ -162,9 +163,9 @@ int main(){
 
 	float midiclorianos = CONST_MIDICLORIANOS;
 	char voluntad = CONST_VOLUNTAD;
-	float d_voluntad = 0.0F;
+	float d_voluntad = CONST_CALCULO;
 	char pasado = CONST_PASADO;
-	float d_pasado = 0.0F;
+	float d_pasado = CONST_CALCULO;
 	float influencia = CONST_MIDICLORIANOS;
 	float const_probabilidad = CONST_PROBABILIDAD;
 
